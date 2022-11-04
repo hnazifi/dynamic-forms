@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormComponent } from './form/form.component';
 import { MaterialModule } from "../material/material.module";
 import { RouterModule, Routes } from "@angular/router";
+import { FormItemComponent } from './form-item/form-item.component';
 
 const routes: Routes = [
   {path: '', component: FormComponent}
@@ -10,7 +11,8 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    FormComponent
+    FormComponent,
+    FormItemComponent
   ],
   imports: [
     CommonModule,

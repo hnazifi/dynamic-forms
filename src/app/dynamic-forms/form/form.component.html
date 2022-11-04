@@ -1,1 +1,13 @@
-<p>form works!</p>
+<h1>Dynamic Forms</h1>
+
+
+<form *ngIf="schemaList" [formGroup]="form" (ngSubmit)="submit()">
+  <div *ngFor="let item of schemaList">
+    <app-form-item [schema]="item" [control]="getFormControlByField(item.field)"></app-form-item>
+  </div>
+
+  <div>
+    <button mat-raised-button color="accent" type="submit" [disabled]="form.invalid">Submit</button>
+  </div>
+
+</form>

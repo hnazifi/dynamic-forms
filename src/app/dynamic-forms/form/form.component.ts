@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { DynamicFormsService } from "../dynamic-forms.service";
+import { FormControl, FormGroup } from "@angular/forms";
+import { SchemaModel } from "../../models/schema.model";
+
 
 @Component({
   selector: 'app-form',
@@ -7,9 +11,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private service: DynamicFormsService) {
   }
 
+  form!: FormGroup;
+  schemaList!: SchemaModel[];
+
+  ngOnInit(): void {
+    this.service.get().subscribe(r => {
+      this.schemaList = r;
+      this.form = this.service.toFormGroup(r);
+    });
+
+  }
+
+  getFormControlByField(field: string): FormControl {
+    return this.form.get(field) as FormControl;
+  }
+
+  submit(): void {
+    console.log(this.form.value)
+  }
 }
