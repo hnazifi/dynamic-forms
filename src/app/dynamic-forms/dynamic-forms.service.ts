@@ -21,12 +21,4 @@ export class DynamicFormsService {
       ...inputs.map(item => ({[item.field]: new FormControl(null, item.mandatory ? [Validators.required] : [])})));
     return new FormGroup(controls);
   }
-
-  // toForm(inputs: SchemaModel[]): FormGroup {
-  //   const group: any = {};
-  //   inputs.forEach(i => {
-  //     group[i.field] = new FormControl('');
-  //   });
-  //   return new FormGroup(group);
-  // }
 }
