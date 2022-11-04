@@ -21,12 +21,12 @@ export class FormComponent implements OnChanges {
     this.form = this.service.toFormGroup(this.schemaList);
   }
 
-
   getFormControlByField(field: string): FormControl {
     return this.form.get(field) as FormControl;
   }
 
   submit(): void {
-    console.log(this.form.value)
+    console.log('Form value is: ' + this.form.value);
+
   }
 }

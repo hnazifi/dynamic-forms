@@ -4,12 +4,12 @@
       <mat-label>
         {{schema.label}}
       </mat-label>
-      <input matInput type="text" [name]="schema.label" [placeholder]="schema.label" [formControl]="control"
-             [required]="schema.mandatory">
+      <input matInput type="text" [name]="schema.field" [placeholder]="schema.label" [formControl]="control"
+             [required]="schema.mandatory ?? false">
     </mat-form-field>
 
     <div *ngSwitchCase="InputTypeEnum.Check">
-      <mat-checkbox color="primary" [formControl]="control" [required]="schema.mandatory"
+      <mat-checkbox color="primary" [formControl]="control" [required]="schema.mandatory ?? false"
                     [ngClass]="{'hidden': schema.hidden === InputVisibilityEnum.True}">
         {{schema.label}}
       </mat-checkbox>

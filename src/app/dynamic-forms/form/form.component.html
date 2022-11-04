@@ -1,7 +1,7 @@
 <h1>Dynamic Forms</h1>
 
 
-<form *ngIf="schemaList" [formGroup]="form" (ngSubmit)="submit()">
+<form *ngIf="form" [formGroup]="form" (ngSubmit)="submit()">
   <div *ngFor="let item of schemaList">
     <app-form-item [schema]="item" [control]="getFormControlByField(item.field)"></app-form-item>
   </div>

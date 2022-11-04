@@ -6,7 +6,7 @@ export interface SchemaModel {
   label: string;
   type: InputTypeEnum;
   hidden: InputVisibilityEnum;
-  mandatory: boolean;
+  mandatory?: boolean;
 }
 
 
