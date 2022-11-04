@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { DynamicFormsService } from "../dynamic-forms.service";
 import { FormControl, FormGroup } from "@angular/forms";
 import { SchemaModel } from "../../models/schema.model";
@@ -9,21 +9,18 @@ import { SchemaModel } from "../../models/schema.model";
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss']
 })
-export class FormComponent implements OnInit {
+export class FormComponent implements OnChanges {
 
   constructor(private service: DynamicFormsService) {
   }
 
   form!: FormGroup;
-  schemaList!: SchemaModel[];
+  @Input() schemaList!: SchemaModel[];
 
-  ngOnInit(): void {
-    this.service.get().subscribe(r => {
-      this.schemaList = r;
-      this.form = this.service.toFormGroup(r);
-    });
-
+  ngOnChanges(): void {
+    this.form = this.service.toFormGroup(this.schemaList);
   }
+
 
   getFormControlByField(field: string): FormControl {
     return this.form.get(field) as FormControl;

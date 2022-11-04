@@ -3,8 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'form',
-    loadChildren: (): Promise<any> => import('./dynamic-forms/dynamic-forms.module').then(d => d.DynamicFormsModule),
+    path: 'sample',
+    loadChildren: () => import('./sample/sample.module').then((s) => s.SampleModule)
   }
 ];
 

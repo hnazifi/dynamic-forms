@@ -5,19 +5,17 @@ import { MaterialModule } from "../material/material.module";
 import { RouterModule, Routes } from "@angular/router";
 import { FormItemComponent } from './form-item/form-item.component';
 
-const routes: Routes = [
-  {path: '', component: FormComponent}
-]
-
 @NgModule({
   declarations: [
     FormComponent,
     FormItemComponent
   ],
+  exports: [
+    FormComponent
+  ],
   imports: [
     CommonModule,
     MaterialModule,
-    RouterModule.forChild(routes),
   ]
 })
 export class DynamicFormsModule { }
