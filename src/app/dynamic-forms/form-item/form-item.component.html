@@ -1,14 +1,17 @@
 <div>
   <ng-container [ngSwitch]="schema.type">
-    <mat-form-field color="primary" *ngSwitchCase="InputTypeEnum.Text" [ngClass]="{'hidden': schema.hidden === InputVisibilityEnum.True}">
-      <mat-label>
-        {{schema.label}}
-      </mat-label>
-      <input matInput type="text" [name]="schema.field" [placeholder]="schema.label" [formControl]="control"
-             [required]="schema.mandatory ?? false">
-    </mat-form-field>
+    <div class="input-wrapper">
+      <mat-form-field appearance="fill" color="primary" *ngSwitchCase="InputTypeEnum.Text" [ngClass]="{'hidden': schema.hidden === InputVisibilityEnum.True}">
+        <mat-label>
+          {{schema.label}}
+        </mat-label>
+        <input matInput type="text" [name]="schema.field" [placeholder]="schema.label" [formControl]="control"
+               [required]="schema.mandatory ?? false">
+        <mat-error *ngIf="control.invalid">{{schema.label}} is required</mat-error>
+      </mat-form-field>
+    </div>
 
-    <div *ngSwitchCase="InputTypeEnum.Check">
+    <div *ngSwitchCase="InputTypeEnum.Check" class="input-wrapper">
       <mat-checkbox color="primary" [formControl]="control" [required]="schema.mandatory ?? false"
                     [ngClass]="{'hidden': schema.hidden === InputVisibilityEnum.True}">
         {{schema.label}}
