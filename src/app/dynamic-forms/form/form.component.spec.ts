@@ -82,8 +82,11 @@ describe('FormComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should enabled submit button when all mandatory inputs are provided', () => {
+  it('should disbale submit button when mandatory inputs are empty', () => {
     expect(hostElement.nativeElement.querySelector('button').disabled).toBeTruthy();
+  });
+
+  it('should enabled submit button when all mandatory inputs are provided', () => {
     (nameInput.nativeElement as HTMLInputElement).value = "Hadi";
     (emailInput.nativeElement as HTMLInputElement).value = "hadi@example.com";
     (nameInput.nativeElement as HTMLInputElement).dispatchEvent(new Event('input'));
@@ -92,4 +95,5 @@ describe('FormComponent', () => {
     fixture.detectChanges();
     expect(hostElement.nativeElement.querySelector('button').disabled).toBeFalsy();
   });
+
 });
